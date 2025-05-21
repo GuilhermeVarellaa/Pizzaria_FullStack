@@ -14,6 +14,7 @@ public class Produto{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", length = 4)
     private long id;
 
     @Column(nullable = false)
@@ -88,6 +89,7 @@ public class Produto{
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
+
 
 
 }

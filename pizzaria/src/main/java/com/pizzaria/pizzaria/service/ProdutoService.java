@@ -3,7 +3,6 @@ package com.pizzaria.pizzaria.service;
 import com.pizzaria.pizzaria.model.Produto;
 import com.pizzaria.pizzaria.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +41,10 @@ public class ProdutoService {
 
     public Produto salvar(Produto produto){
         return produtoRepository.save(produto);
+    }
+
+    public List<Produto> salvarTodos(List<Produto> produtos) {
+        return produtoRepository.saveAll(produtos);
     }
 
     public void excluir(Long id){

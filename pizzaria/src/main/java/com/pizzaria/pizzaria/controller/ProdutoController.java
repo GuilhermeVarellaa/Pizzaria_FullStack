@@ -6,7 +6,6 @@ import com.pizzaria.pizzaria.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,11 +44,12 @@ public class ProdutoController {
     }
 
 
-    @PostMapping
-    public ResponseEntity<Produto> criar(@RequestBody Produto produto){
-        Produto novoProduto = produtoService.salvar(produto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
+    @PostMapping("/batch")
+    public ResponseEntity<List<Produto>> criarEmLote(@RequestBody List<Produto> produtos) {
+        List<Produto> produtosSalvos = produtoService.salvarTodos(produtos);
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtosSalvos);
     }
+
 
 
     @PutMapping("/{id}")
